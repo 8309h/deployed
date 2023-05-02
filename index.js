@@ -2,7 +2,7 @@ const  express =  require("express")
 const {connection}  = require("./config/db")
 const { contentSecurityPolicy } = require("helmet")
 const {UserRouter} =  require("./routes/user.routes")
-const {findip} =  require("./routes/findip.route")
+const {findIp} =  require("./routes/findip.route")
 require('dotenv').config()
 
 
@@ -13,15 +13,13 @@ require('dotenv').config()
 const app =  express()
 app.use(express.json())
 
-
 app.get("/", (req,res) => {
     res.send("IP info app")
 })
 
-
 app.use("/api/user",UserRouter)
 
-app.use("/api/ip",findip)
+app.use("/api/ip",findIp)
 
 app.listen(process.env.Port,async() => {
 

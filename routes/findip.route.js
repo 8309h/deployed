@@ -4,7 +4,7 @@ const {authontication} = require("../middleware/authoncation.middleware")
 
 const findIp = Router()
 
-findIp.get("/getipdata",authontication,getipdata)
+findIp.get("/getipdata",getipdata)
 findIp.get("/getIp",getIp)
 
 module.exports ={findIp}

@@ -1,11 +1,11 @@
 const axios =  require("axios")
 const {redisClient} = require("../helpers/redis")
-const ipAddress = require("../models/findip.model")
+const ipAddress = require("../model/findip.model")
 const { setCache, getCache } = require('../utils/cacheUtils');
-const user = require("../models/user.model");
+const user = require("../model/user.model");
 const jwt = require("jsonwebtoken")
 const logger = require("../middleware/logger")
-const {ipAddressmid} = require("../middleware/ipaddress")
+const ipAddressmid = require("../middleware/ipaddress")
 const API_KEY = process.env.API_KEY
 
 const getipData = async(ip)=>{
@@ -28,7 +28,7 @@ const getIp = async(req,res)=>{
     const {ip} = req.params;
     const token = req.headers.authorization.split(' ')[1];
 
-    const decode = jwt.verify(token,process.env.JWT_SECRET_CODE)
+    const decode = jwt.verify(token,process.env.JWT_Sec)
 
     try{
       const cache = await getCache(ip)
